@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inference-server
+  labels:
+    app: inference-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inference-server
+  template:
+    metadata:
+      labels:
+        app: inference-server
+    spec:
+      containers:
+      - name: camserver 
+        image: edge-container:v2
+        imagePullPolicy: Always
